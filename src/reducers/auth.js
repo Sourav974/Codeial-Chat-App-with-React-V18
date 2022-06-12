@@ -9,6 +9,7 @@ import {
 
 const initialAuthState = {
   user: {},
+
   error: null,
   isLoggedin: false,
   inProgress: false,
