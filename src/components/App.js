@@ -4,10 +4,10 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { fetchPosts } from "../actions/posts";
-import { PostsList, Navbar, Home, Page404, Login } from "./";
-import * as jwtDecode from "jwt-decode";
+import { PostsList, Navbar, Home, Page404, Login, Signup } from "./";
+import jwt from "jwt-decode";
 
-const Signup = () => <div>Signup</div>;
+// const Signup = () => <div>Signup</div>;
 
 class App extends React.Component {
   componentDidMount() {
@@ -16,7 +16,7 @@ class App extends React.Component {
     const token = localStorage.getItem("token");
 
     if (token) {
-      const user = jwtDecode(token);
+      const user = jwt(token);
       console.log("user", user);
     }
   }

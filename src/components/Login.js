@@ -73,7 +73,9 @@ class Login extends Component {
               Logging in...
             </button>
           ) : (
-            <button onClick={this.handleFormSubmit}>Log In</button>
+            <button onClick={this.handleFormSubmit} disabled={inProgress}>
+              Log In
+            </button>
           )}
         </div>
       </form>

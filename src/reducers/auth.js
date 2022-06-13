@@ -30,7 +30,7 @@ export default function auth(state = initialAuthState, action) {
         ...state,
         user: action.user,
         isLoggedin: true,
-        inprogress: false,
+        inProgress: false,
         error: null,
       };
 
@@ -38,7 +38,7 @@ export default function auth(state = initialAuthState, action) {
     case SIGNUP_FAILED:
       return {
         ...state,
-        inprogress: false,
+        inProgress: false,
 
         error: action.error,
       };
