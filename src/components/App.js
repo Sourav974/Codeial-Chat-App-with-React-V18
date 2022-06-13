@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 
 import { fetchPosts } from "../actions/posts";
 import { PostsList, Navbar, Home, Page404, Login, Signup } from "./";
+import { authenticateUser } from "../actions/auth";
 import jwt from "jwt-decode";
 
 // const Signup = () => <div>Signup</div>;
@@ -18,6 +19,13 @@ class App extends React.Component {
     if (token) {
       const user = jwt(token);
       console.log("user", user);
+      this.props.dispatch(
+        authenticateUser({
+          email: user.email,
+          _id: user._id,
+          name: user.name,
+        })
+      );
     }
   }
 
