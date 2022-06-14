@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
 import { logoutUser } from "../actions/auth";
 
 class Navbar extends React.Component {
@@ -8,6 +9,7 @@ class Navbar extends React.Component {
     localStorage.removeItem("token");
     this.props.dispatch(logoutUser());
   };
+
   render() {
     const { auth } = this.props;
     return (
@@ -32,7 +34,7 @@ class Navbar extends React.Component {
             <ul>
               <li className="search-results-row">
                 <img
-                  src="https://cdn-icons-png.flaticon.com/512/2922/2922510.png"
+                  src="https://image.flaticon.com/icons/svg/2154/2154651.svg"
                   alt="user-dp"
                 />
                 <span>John Doe</span>
@@ -50,11 +52,13 @@ class Navbar extends React.Component {
         <div className="right-nav">
           {auth.isLoggedin && (
             <div className="user">
-              <img
-                src="https://cdn-icons.flaticon.com/png/512/560/premium/560277.png?token=exp=1654650205~hmac=bf2049812275e03409356f1d2b28ef05"
-                alt="user-dp"
-                id="user-dp"
-              />
+              <Link to="/settings">
+                <img
+                  src="https://cdn-icons.flaticon.com/png/512/560/premium/560277.png?token=exp=1655186439~hmac=50fc68c512289b0337345c797f85f335"
+                  alt="user-dp"
+                  id="user-dp"
+                />
+              </Link>
               <span>{auth.user.name}</span>
             </div>
           )}
@@ -87,5 +91,4 @@ function mapStateToProps(state) {
     auth: state.auth,
   };
 }
-
 export default connect(mapStateToProps)(Navbar);
