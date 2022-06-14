@@ -54,7 +54,7 @@ class Navbar extends React.Component {
             <div className="user">
               <Link to="/settings">
                 <img
-                  src="https://cdn-icons.flaticon.com/png/512/560/premium/560277.png?token=exp=1655186439~hmac=50fc68c512289b0337345c797f85f335"
+                  src="https://cdn-icons.flaticon.com/png/512/560/premium/560277.png?token=exp=1654650205~hmac=bf2049812275e03409356f1d2b28ef05"
                   alt="user-dp"
                   id="user-dp"
                 />
