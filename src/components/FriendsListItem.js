@@ -7,7 +7,7 @@ function FriendsListItem(props) {
       <Link className="friends-item" to={`user/${props.friend._id}`}>
         <div className="friends-img">
           <img
-            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            src="https://cdn-icons-png.flaticon.com/512/2922/2922506.png"
             alt="user-pic"
           />
         </div>
