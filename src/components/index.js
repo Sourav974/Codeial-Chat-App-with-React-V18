@@ -28,5 +28,4 @@ export {
   CreatePost,
   Post,
   Comment,
-  
 };
