@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Comment } from "./";
-import { createComment } from "../actions/posts";
+import { createComment, addLike } from "../actions/posts";
 
 class Post extends Component {
   constructor(props) {
@@ -33,9 +33,16 @@ class Post extends Component {
     });
   };
 
+  handlePostLike = () => {
+    const { post, user } = this.props;
+    this.props.dispatch(addLike(post._id, "Post", user._id));
+  };
+
   render() {
-    const { post } = this.props;
+    const { post, user } = this.props;
     const { comment } = this.state;
+
+    const isPostKikedByUser = post.likes.includes(user._id);
 
     return (
       <div className="post-wrapper" key={post._id}>
@@ -55,13 +62,21 @@ class Post extends Component {
           <div className="post-content">{post.content}</div>
 
           <div className="post-actions">
-            <div className="post-like">
-              <img
-                src="https://cdn-icons-png.flaticon.com/512/889/889140.png"
-                alt="likes-icon"
-              />
+            <button className="post-like no-btn" onClick={this.handlePostLike}>
+              {isPostKikedByUser ? (
+                <img
+                  src="https://cdn-icons.flaticon.com/png/512/2589/premium/2589175.png?token=exp=1655343740~hmac=98295f681dfafb17d5d0dafb80c35570"
+                  alt="like post"
+                />
+              ) : (
+                <img
+                  src="https://cdn-icons.flaticon.com/png/512/2589/premium/2589197.png?token=exp=1655343787~hmac=7385607f6ef5d87788c7b935fd5f912e"
+                  alt="likes-icon"
+                />
+              )}
+
               <span>{post.likes.length}</span>
-            </div>
+            </button>
 
             <div className="post-comments-icon">
               <img
@@ -95,4 +110,10 @@ Post.propTypes = {
   post: PropTypes.object.isRequired,
 };
 
-export default connect()(Post);
+function mapStateToProps({ auth }) {
+  return {
+    user: auth.user,
+  };
+}
+
+export default connect(mapStateToProps)(Post);
